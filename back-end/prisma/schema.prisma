@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  email     String      @unique @db.VarChar(255)
+  password  String      @db.VarChar(255)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Session   Session[]
+  Institute Institute[]
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Institute {
+  id                Int                 @id @default(autoincrement())
+  userId            Int
+  User              User                @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  name              String              @db.VarChar(255)
+  withdraw          Boolean
+  description       String
+  image             String
+  Responsible       Responsible[]
+  Address           Address[]
+  InstituteCategory InstituteCategory[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+}
+
+model InstituteCategory {
+  id          Int       @id @default(autoincrement())
+  categoryId  Int
+  Category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  instituteId Int
+  Institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Category {
+  id                Int                 @id @default(autoincrement())
+  name              String              @db.VarChar(255)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  InstituteCategory InstituteCategory[]
+}
+
+model Responsible {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  phone       String    @db.VarChar(255)
+  instituteId Int
+  Institute   Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Address {
+  id            Int       @id @default(autoincrement())
+  zipCode       String    @db.VarChar(255)
+  street        String    @db.VarChar(255)
+  number        String    @db.VarChar(255)
+  neighborhood  String    @db.VarChar(255)
+  addressDetail String?   @db.VarChar(255)
+  cityId        Int
+  City          City      @relation(fields: [cityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  instituteId   Int
+  Institute     Institute @relation(fields: [instituteId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  lat           Decimal 
+  lng           Decimal
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model City {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  stateId   Int
+  State     State     @relation(fields: [stateId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Address   Address[]
+  zoneId    Int
+  Zone      Zone      @relation(fields: [zoneId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model State {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique @db.VarChar(255)
+  City      City[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Zone {
+  id        Int      @id @default(autoincrement())
+  ddd       Int      @unique
+  City      City[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
