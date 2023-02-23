@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import NavigationBar from '../../components/Dashboard/NavigationBar';
+import NavigationBar from '../../components/NavigationBar';
 
 import DashboardLayout from '../../layouts/Dashboard';
 
@@ -22,7 +22,7 @@ export default function Dashboard() {
 }
 
 const Container = styled.div`
-  padding: 30px;
+  padding: 20px;
   height: 100%;
   width: 100%;
   overflow-y: auto;

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Typography from '@mui/material/Typography';
-import { toast } from 'react-toastify';
 import MenuItem from '@mui/material/MenuItem';
 
 import useCep from '../../hooks/api/useCep';
@@ -43,9 +42,9 @@ export default function AddressForm() {
 
       try {
         await saveAddress(newData);
-        toast('Informações salvas com sucesso!');
+        //toast('Informações salvas com sucesso!');
       } catch (err) {
-        toast('Não foi possível salvar suas informações!');
+        //toast('Não foi possível salvar suas informações!');
       }
     },
 
@@ -117,7 +116,7 @@ export default function AddressForm() {
           state: cepData.state,
         });
       } catch (error) {
-        toast('A sua região ainda não recebe suporte');
+        //toast('A sua região ainda não recebe suporte');
       }
     }
   }

@@ -4,8 +4,6 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -22,7 +20,6 @@ import useToken from './hooks/useToken';
 function App() {
   return (
     <>
-      <ToastContainer/>
       <UserProvider>
         <Router>
           <Routes>
@@ -32,7 +29,7 @@ function App() {
             </Route>
             <Route path="/sign-in" element = {<SignIn/>}/>
             <Route path="/sign-up" element = {<SignUp/>}/>
-            <Route
+            {/* <Route
                 path="/dashboard"
                 element={
                   <ProtectedRouteGuard>
@@ -41,7 +38,7 @@ function App() {
                 }
               >
                 <Route path='' element = {<FillSubscription/>}/>
-              </Route>
+              </Route> */}
           </Routes>
         </Router>
       </UserProvider>

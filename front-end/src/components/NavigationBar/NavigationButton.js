@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export default function NavigationButton({ active, children }) {
+export default function NavigationButton({ active, children, onClick }) {
   return (
-    <Button active={active}>
+    <Button active={active} onClick = {onClick}>
       {children}
     </Button>
   );
@@ -14,6 +14,7 @@ const Button = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  font-family: "lexend Deca", sans-serif;
 
   display: flex;
   justify-content: center;
@@ -21,13 +22,10 @@ const Button = styled.button`
   flex-direction: row;
   ${props => props.active ? 'background-color: #223047;' : ''}
   color: #fff;
+  
 
   &:hover {
     background-color: #223047;
-  }
-
-  & > *:not(:last-child) {
-    margin-bottom: 4px;
   }
 
   & > *:first-child {

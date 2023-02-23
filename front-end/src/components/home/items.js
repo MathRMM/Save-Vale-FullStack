@@ -71,7 +71,9 @@ const StyledItem = styled.div`
 
   .title {
     grid-area: title;
-    margin: 5px 0px 5px 5px;
+    margin: 6px 0px 5px 6px;
+    font-size: 20px;
+    font-weight: bold;
   }
 
   .category {
@@ -111,7 +113,6 @@ const Container = styled.div`
     padding: 0 18px;
     height: ${(props) => (props.height ? '300px' : '0')};
     overflow: hidden;
-    transition: height 0.6s ease-out;
-    background-color: orange;
+    transition: height 0.3s ease-out;
   }
 `;

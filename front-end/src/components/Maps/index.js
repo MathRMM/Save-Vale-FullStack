@@ -1,6 +1,7 @@
 import { useMemo, useCallback, useState } from 'react';
 import { GoogleMap, MarkerF } from '@react-google-maps/api';
 import MapsLoader from './mapsLoader';
+import { MagnifyingGlass } from 'react-loader-spinner';
 
 export default function Map({ address, expand }) {
   const isLoaded = MapsLoader();
@@ -17,11 +18,11 @@ export default function Map({ address, expand }) {
 
   return isLoaded ? (
     <GoogleMap zoom={13} center={center[0]} mapContainerClassName="map">
-      {center.map(point => (
+      {center.map((point) => (
         <MarkerF position={point} />
       ))}
     </GoogleMap>
   ) : (
-    <>Loading...</>
+    <MagnifyingGlass height="80" width="80" ariaLabel="loading"/>
   );
 }

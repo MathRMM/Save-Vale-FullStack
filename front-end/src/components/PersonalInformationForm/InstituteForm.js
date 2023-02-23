@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Typography from '@mui/material/Typography';
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 import MenuItem from '@mui/material/MenuItem';
 
 import useEnrollment from '../../hooks/api/useEnrollment';
@@ -34,9 +34,9 @@ export default function InstituteForm() {
 
       try {
         await saveEnrollment(newData);
-        toast('Informações salvas com sucesso!');
+        //toast('Informações salvas com sucesso!');
       } catch (err) {
-        toast('Não foi possível salvar suas informações!');
+        //toast('Não foi possível salvar suas informações!');
       }
     },
 
