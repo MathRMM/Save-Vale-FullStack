@@ -15,10 +15,6 @@ export default function NavigationBar() {
     home: { path: "/", name: "Início", icon: <FcHome /> },
   };
 
-  function isActive(buttonPath) {
-    return location.pathname === buttonPath;
-  }
-
   function changeColorWithScroll() {
     const scrollY = window.scrollY
     if(scrollY){
@@ -31,20 +27,9 @@ export default function NavigationBar() {
 
   return (
     <Container background={bgColor}>
-      <div className="main">
-        {Object.keys(main).map((key) => {
-          const section = main[key];
-          return (
-            <Link to={section.path}>
-              <NavigationButton active={isActive(section.path)}>
-                {section.icon}
-                <span>{section.name}</span>
-              </NavigationButton>
-            </Link>
-          );
-        })}
-      </div>
-      <img src={logo} alt="logo" />
+      <Link to={"/"}>
+        <img src={logo} alt="logo" />
+      </Link>
       <Sidebar setVisible={setVisible} />
       <Background isVisible={isVisible} id="background"/>
     </Container>
@@ -61,6 +46,7 @@ const Container = styled.div`
   position: fixed;
   background-color: ${props => props.background? "#151d2b" : "transparent"};
   transition: background-color 500ms ease-in;
+  z-index: 10;
 
   > div {
     display: flex;
@@ -74,8 +60,9 @@ const Container = styled.div`
     margin-left: 5px;
   }
 
-  > a {
-    text-decoration: none;
+  > a img {
+    height: 100%;
+    margin: 5px 0 0 5px;
   }
 
   @media (max-width: 600px) {

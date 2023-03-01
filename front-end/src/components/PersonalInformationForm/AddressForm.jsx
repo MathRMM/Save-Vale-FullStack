@@ -11,7 +11,7 @@ import { useForm } from '../../hooks/useForm';
 
 import Input from '../Form/Input';
 import Button from '../Form/Button';
-import Select from '../../components/Form/Select';
+import Select from '../Form/Select';
 import { FormWrapper } from './FormWrapper';
 import { InputWrapper } from './InputWrapper';
 import { ErrorMsg } from './ErrorMsg';

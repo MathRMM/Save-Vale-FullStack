@@ -11,8 +11,8 @@ import { Row, Title, Label, Divider, Line, Subtitle, OAuthWrapper } from '../../
 import Link from '../../components/Link';
 
 import useSignUp from '../../hooks/api/useSignUp';
-import OAuth from '../../components/Auth/OAuth';
-import { facebookAuth, githubAuth, googleAuth } from '../../utils/authUtils';
+/* import OAuth from '../../components/Auth/OAuth';
+import { facebookAuth, githubAuth, googleAuth } from '../../utils/authUtils'; */
 
 export default function Enroll() {
   const [email, setEmail] = useState('');

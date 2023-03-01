@@ -4,13 +4,7 @@ import Page from '../components/Page';
 import { StyledContainer as Container } from '../components/Auth';
 
 export default function Dashboard({ background, children }) {
-  return (
-    <Page background={background}>
-      <StyledContainer width="90vw" height="100%">
-        {children}
-      </StyledContainer>
-    </Page>
-  );
+  return <Page>{children}</Page>;
 }
 
 const StyledContainer = styled(Container)`
@@ -19,7 +13,7 @@ const StyledContainer = styled(Container)`
   align-items: stretch;
   flex-direction: row;
   padding: 0;
-  
+
   & > * {
     text-align: initial;
   }

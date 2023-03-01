@@ -4,7 +4,8 @@ import { Typography } from '@mui/material';
 
 import useInstitutes from '../../../hooks/api/useInstitutes';
 
-import Item from '../../../components/home/items';
+import Item from '../../../components/home/Items';
+import CarouselSection from '../../../components/home/Carousel';
 
 function HomePage() {
   const { institutes } = useInstitutes([]);
@@ -16,7 +17,9 @@ function HomePage() {
 
   return (
     <>
+      <CarouselSection/>
       <StyledTypography variant="h4">Todas as instituições</StyledTypography>
+
       <GridContainer>{institutes && institutes.map((obj) => <Item obj={obj} key={obj.id} />)}</GridContainer>
     </>
   );

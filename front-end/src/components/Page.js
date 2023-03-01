@@ -5,9 +5,9 @@ export default styled.div`
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: 120px 20px ;
+  max-width: 1920px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   font-size: 48px;
